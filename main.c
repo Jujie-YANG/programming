@@ -1,18 +1,20 @@
-#include <stdlib.h>
 #include <stdio.h>
 int main()
 {
-    int x = 1;
-    int *p = &x;
-    int i = 1;
-    while (-1)
+    int x, y;
+    x = 5;
+    y = 9;
+    int *z = &x;
+    z--;
+    printf("Before x : %d\n", *z);
+    z += 2;
+    printf("After  x : %d\n\n", *z);
+    z = &x - 5;
+    while (z - &x < 10)
     {
-        p++;
-        // write a value
-        *p = rand();
-        // *p = 1234;
-        printf("%d : so far so good. Content of %p is %d\n", i, p, *p);
-        i++;
+        printf("At %p : %d\n", z, *z);
+        printf("At %p : %p\n\n", &z, z);
+        z++;
     }
     return 0;
 }
