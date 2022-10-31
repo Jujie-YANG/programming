@@ -1,20 +1,23 @@
 #include <stdio.h>
+// scope inside a single source file
+int a = 10;       // global & static
+static int c = 1; // file & static
+void foo();
 int main()
 {
-    int x, y;
-    x = 5;
-    y = 9;
-    int *z = &x;
-    z--;
-    printf("Before x : %d\n", *z);
-    z += 2;
-    printf("After  x : %d\n\n", *z);
-    z = &x - 5;
-    while (z - &x < 10)
-    {
-        printf("At %p : %d\n", z, *z);
-        printf("At %p : %p\n\n", &z, z);
-        z++;
-    }
+    printf("in main: a = %d c = %d\n", a, c);
+    foo();
+    printf("in main: a = %d c = %d\n", a, c);
+    foo();
+    printf("in main: a = %d c = %d\n", a, c);
+    foo();
     return 0;
+}
+void foo()
+{
+    int tmp = 3;          // local automatic
+    static int count = 0; // local static
+    a = a + tmp;
+    count++;
+    printf("in foo : tmp = %d count = %d\n", tmp, count);
 }
