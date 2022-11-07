@@ -1,23 +1,8 @@
 #include <stdio.h>
-// scope inside a single source file
-int a = 10;       // global & static
-static int c = 1; // file & static
-void foo();
+void print_even_total(int *b, int max_index);
 int main()
 {
-    printf("in main: a = %d c = %d\n", a, c);
-    foo();
-    printf("in main: a = %d c = %d\n", a, c);
-    foo();
-    printf("in main: a = %d c = %d\n", a, c);
-    foo();
+    int a[5] = {1, 2, 3, 4, 5};
+    print_even_total(a, 5);
     return 0;
-}
-void foo()
-{
-    int tmp = 3;          // local automatic
-    static int count = 0; // local static
-    a = a + tmp;
-    count++;
-    printf("in foo : tmp = %d count = %d\n", tmp, count);
 }
