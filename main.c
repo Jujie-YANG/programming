@@ -1,8 +1,10 @@
 #include <stdio.h>
-void print_even_total(int *b, int max_index);
 int main()
 {
-    int a[5] = {1, 2, 3, 4, 5};
-    print_even_total(a, 5);
+    int a = 10, b = 20;
+    a ^= b;
+    b ^= a;
+    a ^= b;
+    printf(" swapped values are a=%d, b=%d\n", a, b);
     return 0;
 }
