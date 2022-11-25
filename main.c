@@ -1,10 +1,9 @@
-#include <stdio.h>
-int main()
+#include <pthread.h>
+pthread_mutex_t count_mutex;
+int count;
+void increment_count()
 {
-    int a = 10, b = 20;
-    a ^= b;
-    b ^= a;
-    a ^= b;
-    printf(" swapped values are a=%d, b=%d\n", a, b);
-    return 0;
+    pthread_mutex_lock(&count_mutex);
+    count = count + 1;
+    pthread_mutex_unlock(&count_mutex);
 }
